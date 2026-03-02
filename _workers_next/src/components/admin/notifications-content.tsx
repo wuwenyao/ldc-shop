@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label"
 import { toast } from "sonner"
 import type { FormEvent } from "react"
 import { saveNotificationSettings, testBarkNotification, testEmailNotification, testNotification } from "@/actions/admin"
-import { Bell, CreditCard, RotateCcw, ExternalLink, Mail, Smartphone } from "lucide-react"
+import { Bell, CreditCard, RotateCcw, MessageSquare, ExternalLink, Mail, Smartphone } from "lucide-react"
 
 interface NotificationsContentProps {
     settings: {
@@ -162,6 +162,13 @@ export function NotificationsContent({ settings }: NotificationsContentProps) {
                                 <p className="text-muted-foreground">{t('admin.settings.notifications.triggerRefundDesc')}</p>
                             </div>
                         </div>
+                        <div className="flex items-start gap-3 p-3 bg-background rounded-lg border">
+                            <MessageSquare className="h-5 w-5 text-blue-500 mt-0.5 shrink-0" />
+                            <div>
+                                <p className="font-medium">{t('admin.settings.notifications.triggerUserMessage')}</p>
+                                <p className="text-muted-foreground">{t('admin.settings.notifications.triggerUserMessageDesc')}</p>
+                            </div>
+                        </div>
                     </div>
                 </CardContent>
             </Card>
@@ -262,6 +269,7 @@ export function NotificationsContent({ settings }: NotificationsContentProps) {
                         {t('admin.settings.notifications.barkTitle')}
                     </CardTitle>
                     <CardDescription>{t('admin.settings.notifications.barkDesc')}</CardDescription>
+                    <p className="text-xs text-muted-foreground">{t('admin.settings.notifications.barkLanguageFollow')}</p>
                 </CardHeader>
                 <CardContent>
                     <form onSubmit={handleSubmitSave} className="space-y-4">
