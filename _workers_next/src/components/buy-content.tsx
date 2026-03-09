@@ -230,35 +230,6 @@ export function BuyContent({
                                                     <span>{reviewCountState} {t('review.title')}</span>
                                                 </div>
                                             ) : null}
-
-                                            <div className="flex flex-wrap items-baseline gap-2">
-                                                <span className="text-3xl font-semibold tracking-tight text-primary tabular-nums">
-                                                    {priceValue}
-                                                </span>
-                                                <span className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                                                    {t('common.credits')}
-                                                </span>
-                                                {compareAtPriceValue && compareAtPriceValue > priceValue && (
-                                                    <>
-                                                        <span className="text-sm tabular-nums text-muted-foreground/50 line-through">
-                                                            {compareAtPriceValue}
-                                                        </span>
-                                                        <span className="rounded-full bg-red-500/10 px-2 py-0.5 text-[10px] font-semibold text-red-600 dark:bg-red-500/15 dark:text-red-400">
-                                                            -{Math.round((1 - priceValue / compareAtPriceValue) * 100)}%
-                                                        </span>
-                                                    </>
-                                                )}
-                                            </div>
-
-                                            <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-                                                <span>{stockLabel}</span>
-                                                {typeof product.purchaseLimit === 'number' && product.purchaseLimit > 0 && (
-                                                    <>
-                                                        <span className="text-border">·</span>
-                                                        <span>{t('buy.purchaseLimit', { limit: product.purchaseLimit })}</span>
-                                                    </>
-                                                )}
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -535,17 +506,9 @@ export function BuyContent({
 
                 <Card id="reviews" className="tech-card scroll-mt-20 overflow-hidden border-border/35">
                     <CardHeader className="border-b border-border/20 pb-5">
-                        <div className="flex flex-wrap items-center justify-between gap-4">
-                            <CardTitle className="text-2xl tracking-tight">
-                                {t('review.title')}
-                            </CardTitle>
-                            {showReviewSummary && (
-                                <div className="flex items-center gap-3 rounded-full border border-border/40 bg-background/72 px-4 py-2 text-sm text-muted-foreground">
-                                    <StarRating rating={Math.round(averageRatingState)} size="sm" />
-                                    <span className="font-medium text-foreground">{averageRatingState.toFixed(1)}</span>
-                                </div>
-                            )}
-                        </div>
+                        <CardTitle className="text-2xl tracking-tight">
+                            {t('review.title')}
+                        </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-6 pt-6">
                         {canReviewState && reviewOrderIdState && (
